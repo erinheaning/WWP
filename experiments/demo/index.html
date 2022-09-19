@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jspsych-6.3.1/jspsych.js"></script>
+  <script src="jspsych-6.3.1/examples/js/snap.svg-min.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+  <script src="jspsych-vwp.js"></script>
+  <script src="jspsych-vwp-prompt.js"></script>
+  <script src="jspsych-mouseview-start.js"></script>
+  <script src="jspsych-mouseview-stop.js"></script>
+  <link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css">
+</head>
+<body></body>
+<script>
+
+  var preload = {
+    type: 'preload',
+    auto_preload: true
+  };
+
+  var timeline = [];
+
+  var mouseview_trial_start = ()=> {     
+    mouseview.logEvent('Trial Started')
+  }
+  var mouseview_trial_end = ()=> {
+    mouseview.logEvent('Trial Ended')
+ }
+
+ var trial_prompt = {
+  type: 'vwp-prompt',
+  stimuli: ["stims/cat.png","stims/dog.png","stims/donkey.png","stims/kite.png"]
+ }
+
+ timeline.push(trial_prompt);
+
+ timeline.push({
+      type: 'Mouseview-Start',
+      aperture_size: "15%",
+      overlay_alpha: 0.75
+  }) 
+
+ var trial = {
+  type: 'vwp',
+  stimuli: ["stims/cat.png","stims/dog.png","stims/donkey.png","stims/kite.png"],
+  audio: "stims/find_dog.wav",
+  on_start: mouseview_trial_start,
+  on_end: mouseview_trial_end
+ }
+
+ timeline.push(trial);
+
+    timeline.push({
+      type: 'Mouseview-Stop'
+  })
+
+
+
+  jsPsych.init({
+    timeline: timeline,
+    on_finish: function() {
+      jsPsych.data.displayData();
+    }
+  });
+</script>
+
+</html>
