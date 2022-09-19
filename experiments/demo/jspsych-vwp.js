@@ -11,11 +11,11 @@ jsPsych.plugins['vwp'] = (function() {
 
   var plugin = {};
 
-  jsPsych.pluginAPI.registerPreload('explore-choice', 'stimuli', 'image');
-  jsPsych.pluginAPI.registerPreload('coact-test', 'audio', 'audio');
+  jsPsych.pluginAPI.registerPreload('vwp', 'stimuli', 'image');
+  jsPsych.pluginAPI.registerPreload('vwp', 'audio', 'audio');
 
   plugin.info = {
-    name: 'explore-choice',
+    name: 'vwp',
     description: '',
     parameters: {
       stimuli: {

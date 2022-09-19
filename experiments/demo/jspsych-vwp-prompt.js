@@ -11,10 +11,10 @@ jsPsych.plugins['vwp-prompt'] = (function() {
 
   var plugin = {};
 
-  jsPsych.pluginAPI.registerPreload('explore-choice', 'stimuli', 'image');
+  jsPsych.pluginAPI.registerPreload('vwp-prompt', 'stimuli', 'image');
 
   plugin.info = {
-    name: 'explore-choice',
+    name: 'vwp-prompt',
     description: '',
     parameters: {
       stimuli: {
